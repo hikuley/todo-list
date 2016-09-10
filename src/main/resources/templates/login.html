@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${siteTitle}"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{css/reset.css}">
+    <link rel='stylesheet prefetch'
+          href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" th:href="@{css/style.css}">
+</head>
+<body>
+<div class="pen-title">
+    <h1 th:text="${siteTitle}"/>
+</div>
+<!-- Form Module-->
+<div class="module form-module">
+    <div class="toggle" onclick="$.toogleLogin()"><span>Register</span></div>
+    <div class="form">
+        <h2>Login to your account</h2>
+        <form action="javascript:void(0);" class="loginForm">
+            <input name="username" type="text" placeholder="Username"/>
+            <input name="password" type="password" placeholder="Password"/>
+            <button onclick="$.login()">Login</button>
+        </form>
+        <br>
+        <p id="login-error" class="error-show"></p>
+        <p id="register-info" class="info-show"></p>
+    </div>
+    <div class="form">
+        <h2>Create an account</h2>
+        <form action="javascript:void(0);" class="registerForm">
+            <input type="text" name="name" placeholder="Name"/>
+            <input type="text" name="surname" placeholder="Surname"/>
+            <input type="tel" name="cellPhone" placeholder="Phone Number"/>
+            <input type="email" name="email" placeholder="Email Address"/>
+            <input type="text" name="username" placeholder="User Name"/>
+            <input type="password" name="password" placeholder="Password"/>
+            <button onclick="$.register()">Register</button>
+        </form>
+        <br>
+        <p id="register-error" class="error-show"></p>
+    </div>
+    <br>
+</div>
+<script src='webjars/jquery/2.1.3/jquery.min.js'></script>
+<script src='webjars/jquery-validation/1.15.0/jquery.validate.min.js'></script>
+<script th:src="@{js/todo-list.js}"></script>
+</body>
+</html>

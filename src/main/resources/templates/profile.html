@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${siteTitle}"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{css/reset.css}">
+    <link rel="stylesheet" th:href="@{remodal/remodal.css}">
+    <link rel="stylesheet" th:href="@{remodal/remodal-default-theme.css}">
+    <link rel='stylesheet prefetch'
+          href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" th:href="@{css/style.css}">
+    <link rel="stylesheet" href="webjars/jquery-ui/1.12.0/jquery-ui.min.css">
+    <link rel="stylesheet" href="webjars/foundation/6.2.3/dist/foundation.min.css">
+</head>
+<body>
+
+<!-- Start Top Bar -->
+<div class="top-bar">
+    <div class="row small-up-2 large-up-4">
+        <div class="top-bar-left" style="margin-left: 10px;">
+            <ul class="menu">
+                <li class="menu-text">Todo List ... <span class="subheader">drag and drop items</span></li>
+            </ul>
+        </div>
+        <div class="top-bar-right">
+            <ul class="menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/profile">My Profile</a></li>
+                <li><a onclick="$.logout()" href="#">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- End Top Bar -->
+
+<div class="row small-up-2 large-up-4 iyzico_main_content">
+<p>Name: <span th:text="${user.name}"/></p>
+<p>Surname: <span th:text="${user.surname}"/></p>
+<p>E-Mail: <span th:text="${user.email}"/></p>
+<p>Cellphone: <span th:text="${user.cellPhone}"/></p>
+<p>Username: <span th:text="${user.username}"/></p>
+
+</div>
+
+</body>
+</html>

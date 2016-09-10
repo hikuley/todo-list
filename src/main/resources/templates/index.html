@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${siteTitle}"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{css/reset.css}">
+    <link rel="stylesheet" th:href="@{remodal/remodal.css}">
+    <link rel="stylesheet" th:href="@{remodal/remodal-default-theme.css}">
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" th:href="@{css/style.css}">
+    <link rel="stylesheet" href="webjars/jquery-ui/1.12.0/jquery-ui.min.css">
+    <link rel="stylesheet" href="webjars/foundation/6.2.3/dist/foundation.min.css">
+</head>
+<body>
+
+<!-- Start Top Bar -->
+<div class="top-bar">
+    <div class="row small-up-2 large-up-4">
+        <div class="top-bar-left" style="margin-left: 10px;">
+            <ul class="menu">
+                <li class="menu-text">Todo List ... <span class="subheader">drag and drop items</span></li>
+            </ul>
+        </div>
+        <div class="top-bar-right">
+            <ul class="menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/profile">My Profile</a></li>
+                <li><a onclick="$.logout()" href="#">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- End Top Bar -->
+<div class="row">
+    <a class="button newTodo" href="#newTodoModal">New Todo</a>
+
+</div>
+<div class="row small-up-2 large-up-4 iyzico_main_content">
+
+    <div class="column">
+        <h5>Todo</h5>
+        <ul id="TODO" class="connectedSortable">
+            <li th:each="row:${todoList}" class="ui-state-default" th:data-todo-id="${row.id}"
+                th:data-todo-status="${row.status}">
+                <span th:text="${row.name}"/>
+                <p th:text="${row.content}"/>
+                <div class="delete-item" th:data-todo-id="${row.id}">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </div>
+                <div class="update-item">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="column">
+        <h5>Inprogress</h5>
+        <ul id="INPROGRESS" class="connectedSortable">
+
+            <li th:each="row:${inprogressList}" class="ui-state-default" th:data-todo-id="${row.id}"
+                th:data-todo-status="${row.status}">
+                <span th:text="${row.name}"/><p th:text="${row.content}"/>
+                <div class="delete-item" th:data-todo-id="${row.id}">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </div>
+                <div class="update-item">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="column">
+        <h5>Test</h5>
+        <ul id="TEST" class="connectedSortable">
+
+            <li th:each="row:${testList}" class="ui-state-default" th:data-todo-id="${row.id}"
+                th:data-todo-status="${row.status}">
+                <span th:text="${row.name}"/><p th:text="${row.content}"/>
+                <div class="delete-item" th:data-todo-id="${row.id}">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </div>
+                <div class="update-item">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="column">
+        <h5>Done</h5>
+        <ul id="DONE" class="connectedSortable">
+
+            <li th:each="row:${doneList}" class="ui-state-default" th:data-todo-id="${row.id}"
+                th:data-todo-status="${row.status}">
+                <span th:text="${row.name}"/><p th:text="${row.content}"/>
+                <div class="delete-item" th:data-todo-id="${row.id}">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </div>
+                <div class="update-item">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="remodal" data-remodal-id="newTodoModal" role="dialog" aria-labelledby="modal1Title"
+     aria-describedby="modal1Desc">
+    <div>
+        <h3>
+            <small>New Todo</small>
+        </h3>
+        <div class="form">
+            <form id="todoForm" action="javascript:void(0);" class="registerForm">
+                <label>Name</label><input type="text" name="name" placeholder="Name"/>
+                <label>Description</label><input type="text" name="description" placeholder="Description"/>
+                <label>Content</label><input type="text" name="content" placeholder="Content"/>
+                <label>Deadline</label><input type="date" name="deadline" placeholder="Deadline"/>
+            </form>
+        </div>
+
+    </div>
+    <br>
+    <button class="remodal-confirm" onclick="$.todoFormPost()">Save</button>
+    <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+</div>
+
+
+<script src='webjars/jquery/2.1.3/jquery.min.js'></script>
+<script src='webjars/jquery-validation/1.15.0/jquery.validate.min.js'></script>
+<script src="webjars/jquery-ui/1.12.0/jquery-ui.js"></script>
+<script th:src="@{remodal/remodal.min.js}"></script>
+<script th:src="@{js/todo-list.js}"></script>
+<script th:src="@{js/drag-drop.js}"></script>
+</body>
+</html>
